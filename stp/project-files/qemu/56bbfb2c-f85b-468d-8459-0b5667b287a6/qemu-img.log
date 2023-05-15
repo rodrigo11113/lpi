@@ -1,0 +1,1 @@
+Formatting '/home/ruben/GNS3/projects/stp/project-files/qemu/56bbfb2c-f85b-468d-8459-0b5667b287a6/hda_disk.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=4294967296 backing_file=/home/ruben/GNS3/images/QEMU/vios_l2-adventerprisek9-m.ssa.high_iron_20200929.qcow2 backing_fmt=qcow2 lazy_refcounts=off refcount_bits=16
