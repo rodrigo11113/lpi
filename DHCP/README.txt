@@ -90,3 +90,4 @@ sendp(dhcp_discover,iface='eth1',loop=1,verbose=1)
 -> O script: 
   -> Cria pacotes de DHCP discover com mac's diferentes
   -> O router pensa que é outro computador a pedir o IP e atribui-lhe um novo
+  -> Depois de atribuído o pc tenta fazer telnet para o router e em vez de a ligaç
