@@ -12,9 +12,41 @@ domain-name span.com
 exit
 do wr
 exit
+conf t
+int g0/1
+ip add 192.168.2.2 255.255.255.0
+no sh
+exit
+exit
+wr
+
+R2:
+en
+conf t
+int g0/0
+ip add 192.168.2.1 255.255.255.0
+no sh
+exit
+line vty 0 4
+login
+password cisco
+login
+exit
+enable password cisco
+line vty 0 4
+transport input telnet
+exit
+exit
+conf t
+ip route 192.168.1.0 255.255.255.0 192.168.2.2
+ip route 192.168.1.0 255.255.255.0 192.168.2.3
+exit
+wr
 
 Kali:
-Configurar Kali para obter endereço IP através do Servidor DHCP  do router
+ETH0: 192.168.2.3 | 255.255.255.0 | 192.168.2.1
+ETH1: 192.168.1.2 | 255.255.255.0 | 192.168.1.1
+
 
 NetUtils1 & 2:
 Configurar para obter endereço IP através do Servidor DHCP do router
