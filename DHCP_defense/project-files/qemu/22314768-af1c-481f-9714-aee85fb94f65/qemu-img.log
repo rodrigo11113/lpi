@@ -1,1 +1,0 @@
-Formatting '/home/ruben/GNS3/projects/DHCP_defense/project-files/qemu/22314768-af1c-481f-9714-aee85fb94f65/hdb_disk.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=1048576 backing_file=/home/ruben/GNS3/images/QEMU/IOSv_startup_config.img backing_fmt=raw lazy_refcounts=off refcount_bits=16
