@@ -1,0 +1,22 @@
+STP Defense
+
+Passos:
+1. Abrir o GNS3 e montar a topologia;
+2. Abrir o Switch 2 e colocar o seguinte comando “sh spanning-tree” para
+vermos o Protocolo Spanning-Tree e a interface Gi0/1 como Root Port;
+3. Repetir o passo anterior no Switch 1 desta vez para vermos a eleição do
+Switch 1 como Root Bridge;
+4. Abrir o Switch 2 e colocar os seguintes comandos de modo a ativar o bpdu
+guard enable na interface do Kali Linux:
+1. conf t
+2. int gi0/0
+3. spanning-tree bpduguard enable
+4. end
+5. wr
+5. Abrir o Switch 2, ver que foi ativado o “BPDU Guard” e que a interface
+para o Kali foi desativada;
+6. Colocar o seguinte comando “sh spanning-tree” para vermos que a
+interface Gi0/1 continua como Root Port;
+7. Abrir o PC2 e realizar um ping da seguinte forma “ping 192.168.1.1”,
+percebendo que o conseguimos fazer, o que significa que fomos bem
+sucedidos.
